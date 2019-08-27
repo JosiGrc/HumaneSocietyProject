@@ -14,7 +14,7 @@
         <elementListCompartment Id="38135bf3-f40a-453c-aa8d-6da5f5efd582" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c3ab12c8-ff0d-4b6a-9572-3097fd647e00" absoluteBounds="3.5, 3.125, 2, 3.1170068359375005">
+    <classShape Id="c3ab12c8-ff0d-4b6a-9572-3097fd647e00" absoluteBounds="3.5, 3.125, 2, 3.1170068359374996">
       <DataClassMoniker Name="/HumaneSocietyProjectDataContext/Animal" />
       <nestedChildShapes>
         <elementListCompartment Id="3362acdc-0513-4fb9-b308-b8148b73ed9e" absoluteBounds="3.515, 3.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
@@ -96,28 +96,28 @@
         <classShapeMoniker Id="50943797-a8c5-4d13-a9f9-6026b714e0bc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 12.6354484049479); (3.5 : 12.6354484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 12.6354484049479); (3.5 : 12.6354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HumaneSocietyProjectDataContext/Address/Address_Client" />
       <nodes>
         <classShapeMoniker Id="0b08d440-69c2-4a3a-9720-f69fdc92e751" />
         <classShapeMoniker Id="abcec8a0-1420-495d-9463-1599b66133c7" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.95359537760417); (3.125 : 3.32859537760417); (3.125 : 2.75); (3.5 : 3.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 2.95359537760417); (3.125 : 3.03929768880208); (3.5 : 3.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HumaneSocietyProjectDataContext/DietPlan/DietPlan_Animal" />
       <nodes>
         <classShapeMoniker Id="8b5f13c0-029f-401b-86a3-cf64370001ed" />
         <classShapeMoniker Id="c3ab12c8-ff0d-4b6a-9572-3097fd647e00" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.82774983723958); (4.5 : 7.82774983723958); (4.5 : 6.2420068359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 7.86182332356771); (4.17211947265625 : 7.86182332356771); (4.17211947265625 : 6.2420068359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HumaneSocietyProjectDataContext/Employee/Employee_Animal" />
       <nodes>
         <classShapeMoniker Id="2615accb-5642-4f8b-a1af-23922d3f72f7" />
         <classShapeMoniker Id="c3ab12c8-ff0d-4b6a-9572-3097fd647e00" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.0312525 : 6.2420068359375); (5.0312525 : 6.907902890625); (5.97916666666667 : 6.907902890625 : JumpStart); (6.14583333333333 : 6.907902890625 : JumpEnd); (6.25 : 6.907902890625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.86731223632813 : 6.2420068359375); (4.86731223632813 : 6.907902890625); (5.97916666666667 : 6.907902890625 : JumpStart); (6.14583333333333 : 6.907902890625 : JumpEnd); (6.25 : 6.907902890625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HumaneSocietyProjectDataContext/Animal/Animal_Room" />
       <nodes>
         <classShapeMoniker Id="c3ab12c8-ff0d-4b6a-9572-3097fd647e00" />
@@ -131,7 +131,7 @@
         <classShapeMoniker Id="61345b86-cb80-4eec-8361-741cb4ed09a3" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.125 : 14.875); (2.125 : 13.5208968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.125 : 14.875); (2.125 : 13.5208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HumaneSocietyProjectDataContext/USState/USState_Address" />
       <nodes>
         <classShapeMoniker Id="221e9303-8cee-47f9-9086-dcd833fb9663" />

@@ -8,11 +8,11 @@ namespace HumaneSociety
 {
     public static class Query
     {        
-        static HumaneSocietyDataContext db;
+        static HumaneSocietyProjectDataContext db;
 
         static Query()
         {
-            db = new HumaneSocietyDataContext();
+            db = new HumaneSocietyProjectDataContext();
         }
 
         internal static List<USState> GetStates()
@@ -166,13 +166,13 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            
         }
 
         // TODO: Animal CRUD Operations
-        internal static void AddAnimal(Animal animal)
+        internal static void AddAnimal(Animal animal)//Would the method from userEmployee be called here?
         {
-            throw new NotImplementedException();
+            //UserEmployee.AddAnimal();
         }
 
         internal static Animal GetAnimalByID(int id)
