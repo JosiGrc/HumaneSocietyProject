@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace HumaneSociety
 {
     public static class Query
+<<<<<<< HEAD
     {        
+=======
+    {
+>>>>>>> 4271dad5df0e9eb84bd755f9327fae9a64319c7f
         static HumaneSocietyProjectDataContext db;
 
         static Query()
