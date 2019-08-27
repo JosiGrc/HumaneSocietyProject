@@ -207,7 +207,8 @@ namespace HumaneSociety
         
         internal static Room GetRoom(int animalId)
         {
-
+            Room room = db.Rooms.Where(c => c.RoomId.Equals(animalId)).FirstOrDefault();
+            return room;
         }
         
         internal static int GetDietPlanId(string dietPlanName)
