@@ -170,9 +170,9 @@ namespace HumaneSociety
         }
 
         // TODO: Animal CRUD Operations
-        internal static void AddAnimal(Animal animal)//Would the method from userEmployee be called here?
+        internal static void AddAnimal(Animal animal)//The result from the Method AddAnimal would come here and go to the table
         {
-            //UserEmployee.AddAnimal();
+
         }
 
         internal static Animal GetAnimalByID(int id)

@@ -14,7 +14,7 @@ INSERT INTO USStates VALUES('Alabama','AL');
 INSERT INTO USStates VALUES('Alaska','AK');
 INSERT INTO USStates VALUES('Arizona','AZ');
 INSERT INTO USStates VALUES('Arkansas','AR');
-INSERT INTO USStates VALUES('California','CA');
+INSERT INTO USStates VALUES('California','CA');   
 INSERT INTO USStates VALUES('Colorado','CO');
 INSERT INTO USStates VALUES('Connecticut','CT');
 INSERT INTO USStates VALUES('Delaware','DE');
