@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace HumaneSociety
 {
     public static class Query
-    {        
-        static HumaneSocietyDataContext db;
+    {
+        static HumaneSocietyProjectDataContext db;
 
         static Query()
         {
-            db = new HumaneSocietyDataContext();
+            db = new HumaneSocietyProjectDataContext();
         }
 
         internal static List<USState> GetStates()

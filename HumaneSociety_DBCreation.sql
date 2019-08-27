@@ -1,62 +1,40 @@
-CREATE TABLE Employees (EmployeeId INTEGER IDENTITY (1,1) PRIMARY KEY, FirstName VARCHAR(50), LastName VARCHAR(50), UserName VARCHAR(50), Password VARCHAR(50), EmployeeNumber INTEGER, Email VARCHAR(50));
-CREATE TABLE Categories (CategoryId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50));
-CREATE TABLE DietPlans(DietPlanId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50), FoodType VARCHAR(50), FoodAmountInCups INTEGER);
-CREATE TABLE Animals (AnimalId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50), Weight INTEGER, Age INTEGER, Demeanor VARCHAR(50), KidFriendly BIT, PetFriendly BIT, Gender VARCHAR(50), AdoptionStatus VARCHAR(50), CategoryId INTEGER FOREIGN KEY REFERENCES Categories(CategoryId), DietPlanId INTEGER FOREIGN KEY REFERENCES DietPlans(DietPlanId), EmployeeId INTEGER FOREIGN KEY REFERENCES Employees(EmployeeId));
-CREATE TABLE Rooms (RoomId INTEGER IDENTITY (1,1) PRIMARY KEY, RoomNumber INTEGER, AnimalId INTEGER FOREIGN KEY REFERENCES Animals(AnimalId));
-CREATE TABLE Shots (ShotId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50));
-CREATE TABLE AnimalShots (AnimalId INTEGER FOREIGN KEY REFERENCES Animals(AnimalId), ShotId INTEGER FOREIGN KEY REFERENCES Shots(ShotId), DateReceived DATE, CONSTRAINT AnimalShotId PRIMARY KEY (AnimalId, ShotId));
-CREATE TABLE USStates (USStateId INTEGER IDENTITY (1,1) PRIMARY KEY, Name VARCHAR(50), Abbreviation VARCHAR(2));
-CREATE TABLE Addresses (AddressId INTEGER IDENTITY (1,1) PRIMARY KEY, AddressLine1 VARCHAR(50), City VARCHAR(50), USStateId INTEGER FOREIGN KEY REFERENCES USStates(USStateId),  Zipcode INTEGER); 
-CREATE TABLE Clients (ClientId INTEGER IDENTITY (1,1) PRIMARY KEY, FirstName VARCHAR(50), LastName VARCHAR(50), UserName VARCHAR(50), Password VARCHAR(50), AddressId INTEGER FOREIGN KEY REFERENCES Addresses(AddressId), Email VARCHAR(50));
-CREATE TABLE Adoptions(ClientId INTEGER FOREIGN KEY REFERENCES Clients(ClientId), AnimalId INTEGER FOREIGN KEY REFERENCES Animals(AnimalId), ApprovalStatus VARCHAR(50), AdoptionFee INTEGER, PaymentCollected BIT, CONSTRAINT AdoptionId PRIMARY KEY (ClientId, AnimalId));
 
-INSERT INTO USStates VALUES('Alabama','AL');
-INSERT INTO USStates VALUES('Alaska','AK');
-INSERT INTO USStates VALUES('Arizona','AZ');
-INSERT INTO USStates VALUES('Arkansas','AR');
-INSERT INTO USStates VALUES('California','CA');
-INSERT INTO USStates VALUES('Colorado','CO');
-INSERT INTO USStates VALUES('Connecticut','CT');
-INSERT INTO USStates VALUES('Delaware','DE');
-INSERT INTO USStates VALUES('Florida','FL');
-INSERT INTO USStates VALUES('Georgia','GA');
-INSERT INTO USStates VALUES('Hawaii','HI');
-INSERT INTO USStates VALUES('Idaho','ID');
-INSERT INTO USStates VALUES('Illinois','IL');
-INSERT INTO USStates VALUES('Indiana','IN');
-INSERT INTO USStates VALUES('Iowa','IA');
-INSERT INTO USStates VALUES('Kansas','KS');
-INSERT INTO USStates VALUES('Kentucky','KY');
-INSERT INTO USStates VALUES('Louisiana','LA');
-INSERT INTO USStates VALUES('Maine','ME');
-INSERT INTO USStates VALUES('Maryland','MD');
-INSERT INTO USStates VALUES('Massachusetts','MA');
-INSERT INTO USStates VALUES('Michigan','MI');
-INSERT INTO USStates VALUES('Minnesota','MN');
-INSERT INTO USStates VALUES('Mississippi','MS');
-INSERT INTO USStates VALUES('Missouri','MO');
-INSERT INTO USStates VALUES('Montana','MT');
-INSERT INTO USStates VALUES('Nebraska','NE');
-INSERT INTO USStates VALUES('Nevada','NV');
-INSERT INTO USStates VALUES('New Hampshire','NH');
-INSERT INTO USStates VALUES('New Jersey','NJ');
-INSERT INTO USStates VALUES('New Mexico','NM');
-INSERT INTO USStates VALUES('New York','NY');
-INSERT INTO USStates VALUES('North Carolina','NC');
-INSERT INTO USStates VALUES('North Dakota','ND');
-INSERT INTO USStates VALUES('Ohio','OH');
-INSERT INTO USStates VALUES('Oklahoma','OK');
-INSERT INTO USStates VALUES('Oregon','OR');
-INSERT INTO USStates VALUES('Pennsylvania','PA');
-INSERT INTO USStates VALUES('Rhode Island','RI');
-INSERT INTO USStates VALUES('South Carolina','SC');
-INSERT INTO USStates VALUES('South Dakota','SD');
-INSERT INTO USStates VALUES('Tennessee','TN');
-INSERT INTO USStates VALUES('Texas','TX');
-INSERT INTO USStates VALUES('Utah','UT');
-INSERT INTO USStates VALUES('Vermont','VT');
-INSERT INTO USStates VALUES('Virginia','VA');
-INSERT INTO USStates VALUES('Washington','WA');
-INSERT INTO USStates VALUES('West Virgina','WV');
-INSERT INTO USStates VALUES('Wisconsin','WI');
-INSERT INTO USStates VALUES('Wyoming','WY');
+
+INSERT INTO Employees VALUES('Dan','Jennings','DanTheMan','DanIsGreat123',37456,'Dan@gmail.com');
+INSERT INTO Employees VALUES('Becky','Gee','BeckyWithTheBlondeHair','Becky123',37335,'Becky@gmail.com');
+INSERT INTO Employees VALUES('Ian','Jacobs','IanIsAwesome','Ian123',34555,'Ian@gmail.com');
+INSERT INTO Employees VALUES('Brad','Jacobs','BradleyCooper','Bradley123',38999,'Brad@gmail.com');
+INSERT INTO Employees VALUES('Aaron','Rodgers','ARod','Rodgers123',12121,'Arod@gmail.com');
+
+INSERT INTO Animals VALUES('Betty',20,3,'Happy','true','true','Female','Waiting',1,1,1);
+INSERT INTO Animals VALUES('Nevin',10,2,'Grumpy','false','false','Female','In Process',2,2,2);
+INSERT INTO Animals VALUES('Josi',5,1,'Happy','true','true','Male','Waiting',3,3,3);
+INSERT INTO Animals VALUES('Abe',10,5,'Happy','true','true','Male','Waiting',4,4,4);
+INSERT INTO Animals VALUES('Mike',5,3,'Happy','true','false','Male','Adopted',5,5,5);
+
+INSERT INTO Rooms VALUES(1,16);
+INSERT INTO Rooms VALUES(2,17);
+INSERT INTO Rooms VALUES(3,20);
+INSERT INTO Rooms VALUES(4,19);
+INSERT INTO Rooms VALUES(5,17);
+INSERT INTO Rooms VALUES(6,18);
+INSERT INTO Rooms VALUES(7,20);
+INSERT INTO Rooms VALUES(8,18);
+INSERT INTO Rooms VALUES(9,16);
+INSERT INTO Rooms VALUES(10,19);
+
+INSERT INTO Clients VALUES('Jay','Z','JayJay','JayDot123',1,'jay@gmail.com');
+INSERT INTO Clients VALUES('Sue','Bird','Birdy','Sue123',2,'sue@gmail.com');
+INSERT INTO Clients VALUES('Kobe','Bryant','BlackMamba','Kobe123',3,'kobe@gmail.com');
+INSERT INTO Clients VALUES('Lebron','James','CryBaby','LBJ123',4,'james@gmail.com');
+INSERT INTO Clients VALUES('Leroy','Jenkins','LeroyJenks','Leroy123',5,'leroy@gmail.com');
+
+INSERT INTO Addresses VALUES('123 W Cherry St.','Milwaukee',49,53215);
+INSERT INTO Addresses VALUES('343 N Galena St.','New York',32,53467);
+INSERT INTO Addresses VALUES('983 W Lisbon St.','Los Angeles',5,57775);
+INSERT INTO Addresses VALUES('188 E National St.','Boston',21,59990);
+INSERT INTO Addresses VALUES('666 S Elm St.','Langsing',22,59435);
+
+
+
+SELECT * FROM Clients
