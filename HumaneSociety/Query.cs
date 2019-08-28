@@ -329,7 +329,16 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            
+            Adoption adoption = new Adoption();
+            var adoptClient = db.Clients.FirstOrDefault(c => c.ClientId == client.ClientId);
+            var adoptAnimal = db.Animals.FirstOrDefault(a => a.AnimalId == animal.AnimalId);
+            adoption.ClientId = adoptClient.ClientId;
+            adoption.AnimalId = adoptAnimal.AnimalId;
+            adoption.ApprovalStatus = "Waiting";
+            adoption.AdoptionFee = null;
+            adoption.PaymentCollected = false;
+            db.Adoptions.InsertOnSubmit(adoption);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
