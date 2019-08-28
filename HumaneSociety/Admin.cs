@@ -62,6 +62,7 @@ namespace HumaneSociety
         private void UpdateEmployee()
         {
             Employee employee = new Employee();
+            employee.EmployeeId = int.Parse(UserInterface.GetStringData("employee id", "the employee's"));
             employee.FirstName = UserInterface.GetStringData("first name", "the employee's");
             employee.LastName = UserInterface.GetStringData("last name", "the employee's");
             employee.EmployeeNumber = int.Parse(UserInterface.GetStringData("employee number", "the employee's"));
@@ -90,6 +91,7 @@ namespace HumaneSociety
             catch
             {
                 Console.Clear();
+                Console.WriteLine();
                 UserInterface.DisplayUserOptions("Employee not found please try again or type exit;");
                 return;
             }

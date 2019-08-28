@@ -8,11 +8,11 @@ namespace HumaneSociety
 {
     public static class Query
     {
-        static HumaneSocietyProjectDataContext db;
+        static HumaneSocietyDataContext db;
 
         static Query()
         {
-            db = new HumaneSocietyProjectDataContext();
+            db = new HumaneSocietyDataContext();
         }
 
         internal static List<USState> GetStates()
@@ -162,11 +162,39 @@ namespace HumaneSociety
 
 
         //// TODO Items: ////
-        
-        // TODO: Allow any of the CRUD operations to occur here
-        internal static void RunEmployeeQueries(Employee employee, string crudOperation)
+
+        //todo: allow any of the crud operations to occur here
+        internal static void RunEmployeeQueries(Employee employee, string crudoperation)
         {
-            throw new NotImplementedException();
+            switch (crudoperation)
+            {
+                case "delete":
+                    var employeeDelete = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber && e.LastName == employee.LastName).Single();
+                    db.Employees.DeleteOnSubmit(employeeDelete);
+                    db.SubmitChanges();
+                    break;
+                case "update":
+                    var employeeUpdate = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).SingleOrDefault();
+
+                    employeeUpdate.FirstName = employee.FirstName;
+                    employeeUpdate.LastName = employee.LastName;
+                    employeeUpdate.EmployeeNumber = employee.EmployeeNumber;
+                    employeeUpdate.Email = employee.Email;
+
+                    db.SubmitChanges();
+                    break;
+                case "create":
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
+                case "read":
+                    var employeeRead = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).SingleOrDefault();
+                    List<string> employeeInformation = new List<string>() { employeeRead.FirstName, employeeRead.LastName, employeeRead.Email};
+                    UserInterface.DisplayUserOptions(employeeInformation);
+                    break;
+                default:
+                    break;
+            }
         }
 
         // TODO: Animal CRUD Operations
@@ -215,7 +243,7 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()

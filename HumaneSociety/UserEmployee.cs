@@ -212,7 +212,7 @@ namespace HumaneSociety
 
         private IQueryable<Animal> SearchForAnimal(int iD)
         {
-            HumaneSocietyProjectDataContext context = new HumaneSocietyProjectDataContext();
+            HumaneSocietyDataContext context = new HumaneSocietyDataContext();
             var animals = (from animal in context.Animals where animal.AnimalId == iD select animal);
             return animals;
         }       

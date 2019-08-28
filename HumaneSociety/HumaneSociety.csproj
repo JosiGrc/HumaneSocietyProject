@@ -46,10 +46,10 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="HumaneSocietyProject.designer.cs">
+    <Compile Include="HumaneSociety.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HumaneSocietyProject.dbml</DependentUpon>
+      <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </Compile>
     <Compile Include="PointOfEntry.cs" />
     <Compile Include="Program.cs" />
@@ -66,13 +66,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="HumaneSocietyProject.dbml">
+    <None Include="HumaneSociety.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>HumaneSocietyProject.designer.cs</LastGenOutput>
+      <LastGenOutput>HumaneSociety.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="HumaneSocietyProject.dbml.layout">
-      <DependentUpon>HumaneSocietyProject.dbml</DependentUpon>
+    <None Include="HumaneSociety.dbml.layout">
+      <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
