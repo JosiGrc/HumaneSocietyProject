@@ -198,46 +198,86 @@ namespace HumaneSociety
         }
 
         // TODO: Animal CRUD Operations
-        internal static void AddAnimal(Animal animal)
+        internal static void AddAnimal(Animal animal)//The result from the Method AddAnimal would come here and go to the table
         {
-            throw new NotImplementedException();
+            db.Animals.InsertOnSubmit(animal);
+            db.SubmitChanges();
         }
 
         internal static Animal GetAnimalByID(int id)
         {
-            throw new NotImplementedException();
+            Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
+            return animal;
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
-            throw new NotImplementedException();
+        {        
+            
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            var animalInDb = db.Animals.Where(a => a.AnimalId == animal.AnimalId).Single();
+            db.Animals.DeleteOnSubmit(animalInDb);
+            db.SubmitChanges();
         }
-        
+
         // TODO: Animal Multi-Trait Search
-        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
+        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates, Animal animal) // parameter(s)?
         {
-            throw new NotImplementedException();
+            IQueryable<Animal> animals = db.Animals;
+            foreach (KeyValuePair<int, string> update in updates)
+            {
+                switch (updates)
+                {
+                    case 1: animals = db.Animals.Where(a => a.AnimalId == update);
+                        break;
+                    case 2:
+                        animals = db.Animals.Where(a => a.Name == updates);
+                        break;
+                    case 3:
+                        animals = db.Animals.Where(a => a.Age == updates).ToList();
+                        break;
+                    case 4:
+                        animals = db.Animals.Where(a => a.Demeanor == updates).ToList();
+                        break;
+                    case 5:
+                        animals = db.Animals.Where(a => a.KidFriendly == updates).ToList();
+                        break;
+                    case 6:
+                        animals = db.Animals.Where(a => a.PetFriendly == updates).ToList();
+                        break;
+                    case 7:
+                        animals = db.Animals.Where(a => a.Gender == updates).ToList();
+                        break;
+                    case 8:
+                        animals = db.Animals.Where(a => a.CategoryId == updates).ToList();
+                        break;
+                    default: Console.WriteLine("There were no animals that fir your search.");
+                        break;
+                }
+            }
+            return animals;
+         
         }
          
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
-            throw new NotImplementedException();
+            var categoryId = db.Categories.Where(c => c.Name.Equals(categoryName)).FirstOrDefault();
+            return categoryId.CategoryId;
         }
         
         internal static Room GetRoom(int animalId)
         {
-            throw new NotImplementedException();
+            Room room = db.Rooms.Where(c => c.RoomId.Equals(animalId)).FirstOrDefault();
+            return room;
         }
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+            var dietPlanId = db.DietPlans.Where(c => c.Name.Equals(dietPlanName)).FirstOrDefault();
+            return dietPlanId.DietPlanId;
         }
 
         // TODO: Adoption CRUD Operations
