@@ -269,35 +269,35 @@ namespace HumaneSociety
         }
 
         // TODO: Animal Multi-Trait Search
-        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates, Animal animal) // parameter(s)?
+        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
             IQueryable<Animal> animals = db.Animals;
             foreach (KeyValuePair<int, string> update in updates)
             {
-                switch (updates)
+                switch (update.Key)
                 {
-                    case 1: animals = db.Animals.Where(a => a.AnimalId == update);
+                    case 1: animals = db.Animals.Where(a => a.CategoryId == GetCategoryId(update.Value));
                         break;
                     case 2:
-                        animals = db.Animals.Where(a => a.Name == updates);
+                        animals = db.Animals.Where(a => a.Name == update.Value);
                         break;
                     case 3:
-                        animals = db.Animals.Where(a => a.Age == updates).ToList();
+                        animals = db.Animals.Where(a => a.Age == int.Parse(update.Value));
                         break;
                     case 4:
-                        animals = db.Animals.Where(a => a.Demeanor == updates).ToList();
+                        animals = db.Animals.Where(a => a.Demeanor == update.Value);
                         break;
                     case 5:
-                        animals = db.Animals.Where(a => a.KidFriendly == updates).ToList();
+                        animals = db.Animals.Where(a => a.KidFriendly == Convert.ToBoolean(update.Value));
                         break;
                     case 6:
-                        animals = db.Animals.Where(a => a.PetFriendly == updates).ToList();
+                        animals = db.Animals.Where(a => a.PetFriendly == Convert.ToBoolean(update.Value));
                         break;
                     case 7:
-                        animals = db.Animals.Where(a => a.Gender == updates).ToList();
+                        animals = db.Animals.Where(a => a.Gender == update.Value);
                         break;
                     case 8:
-                        animals = db.Animals.Where(a => a.CategoryId == updates).ToList();
+                        animals = db.Animals.Where(a => a.Weight == int.Parse(update.Value)); ;
                         break;
                     default: Console.WriteLine("There were no animals that fir your search.");
                         break;
