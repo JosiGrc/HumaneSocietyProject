@@ -183,15 +183,17 @@ namespace HumaneSociety
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
-            throw new NotImplementedException();
+        {        
+            
         }
 
-        internal static void RemoveAnimal(Animal animal)
+        internal static void RemoveAnimal(Animal animal)//locate the animal on the database (by animal id or something) then deleteonsubmit.
         {
-            throw new NotImplementedException();
+            db.Animals.Where(a => a.AnimalId.Equals(animal));
+            db.SubmitChanges();
+
         }
-        
+
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
