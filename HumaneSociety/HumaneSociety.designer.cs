@@ -22,8 +22,8 @@ namespace HumaneSociety
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HumaneSocietyProject")]
-	public partial class HumaneSocietyProjectDataContext : System.Data.Linq.DataContext
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HumaneSociety")]
+	public partial class HumaneSocietyDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -65,31 +65,31 @@ namespace HumaneSociety
     partial void DeleteUSState(USState instance);
     #endregion
 		
-		public HumaneSocietyProjectDataContext() : 
-				base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyProjectConnectionString, mappingSource)
+		public HumaneSocietyDataContext() : 
+				base(global::HumaneSociety.Properties.Settings.Default.HumaneSocietyConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public HumaneSocietyProjectDataContext(string connection) : 
+		public HumaneSocietyDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public HumaneSocietyProjectDataContext(System.Data.IDbConnection connection) : 
+		public HumaneSocietyDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public HumaneSocietyProjectDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public HumaneSocietyDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public HumaneSocietyProjectDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public HumaneSocietyDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
