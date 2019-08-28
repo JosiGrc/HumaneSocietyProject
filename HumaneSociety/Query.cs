@@ -187,17 +187,50 @@ namespace HumaneSociety
             
         }
 
-        internal static void RemoveAnimal(Animal animal)//locate the animal on the database (by animal id or something) then deleteonsubmit.
+        internal static void RemoveAnimal(Animal animal)
         {
-            db.Animals.Where(a => a.AnimalId.Equals(animal));
+            var animalInDb = db.Animals.Where(a => a.AnimalId == animal.AnimalId).Single();
+            db.Animals.DeleteOnSubmit(animalInDb);
             db.SubmitChanges();
-
         }
 
         // TODO: Animal Multi-Trait Search
-        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
+        internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates, Animal animal) // parameter(s)?
         {
-            throw new NotImplementedException();
+            IQueryable<Animal> animals = db.Animals;
+            foreach (KeyValuePair<int, string> update in updates)
+            {
+                switch (updates)
+                {
+                    case 1: animals = db.Animals.Where(a => a.AnimalId == update);
+                        break;
+                    case 2:
+                        animals = db.Animals.Where(a => a.Name == updates);
+                        break;
+                    case 3:
+                        animals = db.Animals.Where(a => a.Age == updates).ToList();
+                        break;
+                    case 4:
+                        animals = db.Animals.Where(a => a.Demeanor == updates).ToList();
+                        break;
+                    case 5:
+                        animals = db.Animals.Where(a => a.KidFriendly == updates).ToList();
+                        break;
+                    case 6:
+                        animals = db.Animals.Where(a => a.PetFriendly == updates).ToList();
+                        break;
+                    case 7:
+                        animals = db.Animals.Where(a => a.Gender == updates).ToList();
+                        break;
+                    case 8:
+                        animals = db.Animals.Where(a => a.CategoryId == updates).ToList();
+                        break;
+                    default: Console.WriteLine("There were no animals that fir your search.");
+                        break;
+                }
+            }
+            return animals;
+         
         }
          
         // TODO: Misc Animal Things
