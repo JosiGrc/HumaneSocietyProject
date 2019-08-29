@@ -46,3 +46,9 @@ INSERT INTO Clients VALUES ('Round','Square','Quad','Square22',2,'square@gmail')
 INSERT INTO Clients VALUES ('Triangle','Shape','3sides','triple33',3,'triangle@gmail');
 INSERT INTO Clients VALUES ('Bird','Person','Burd','Bird44',4,'bird@gmail');
 INSERT INTO Clients VALUES ('Morty','Jerry','shmeckles','morty55',5,'morty@gmail');
+
+INSERT INTO Shots VALUES ('Too Hung');
+INSERT INTO Shots VALUES ('Too Ugly');
+INSERT INTO Shots VALUES ('Too Skinny');
+INSERT INTO Shots VALUES ('Too Pretty');
+INSERT INTO Shots VALUES ('Too Furry');
