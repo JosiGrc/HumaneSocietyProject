@@ -166,8 +166,36 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
-        }
+                switch (crudOperation)
+                {
+                    case "delete":
+                        var employeeDelete = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber && e.LastName == employee.LastName).Single();
+                        db.Employees.DeleteOnSubmit(employeeDelete);
+                        db.SubmitChanges();
+                        break;
+                    case "update":
+                        var employeeUpdate = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).SingleOrDefault();
+
+                        employeeUpdate.FirstName = employee.FirstName;
+                        employeeUpdate.LastName = employee.LastName;
+                        employeeUpdate.EmployeeNumber = employee.EmployeeNumber;
+                        employeeUpdate.Email = employee.Email;
+
+                        db.SubmitChanges();
+                        break;
+                    case "create":
+                        db.Employees.InsertOnSubmit(employee);
+                        db.SubmitChanges();
+                        break;
+                    case "read":
+                        var employeeRead = db.Employees.Where(e => e.EmployeeNumber == employee.EmployeeNumber).SingleOrDefault();
+                        List<string> employeeInformation = new List<string>() { employeeRead.FirstName, employeeRead.LastName, employeeRead.Email };
+                        UserInterface.DisplayUserOptions(employeeInformation);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)//The result from the Method AddAnimal would come here and go to the table
@@ -348,12 +376,15 @@ namespace HumaneSociety
             var animalShots = db.AnimalShots.Where(a => a.AnimalId == animal.AnimalId);
             return animalShots;
         }
-
         internal static void UpdateShot(string shotName, Animal animal)
         {
+<<<<<<< HEAD
             var newShots = db.AnimalShots.Where(a => a.AnimalId == animal.AnimalId).SingleOrDefault();
             db.SubmitChanges();
 
+=======
+                
+>>>>>>> a91693e3121b850ed7416249811139254704f3d6
         }
     }
 }
