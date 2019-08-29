@@ -269,7 +269,7 @@ namespace HumaneSociety
                         animals = db.Animals.Where(a => a.Gender == update.Value);
                         break;
                     case 8:
-                        animals = db.Animals.Where(a => a.Weight == int.Parse(update.Value)); ;
+                        animals = db.Animals.Where(a => a.Weight == int.Parse(update.Value)); 
                         break;
                     default: Console.WriteLine("There were no animals that fit your search.");
                         break;
@@ -322,9 +322,16 @@ namespace HumaneSociety
             return waitingTobeAdopted;
         }
 
-        internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
+        internal static void UpdateAdoption(bool isAdopted, Adoption adoption)//if the result from the adoption is true the update the adoption table else dont
         {
-
+            if(isAdopted == true)
+            {
+                var adoptionMade = db.Adoptions.Where(a => a.ApprovalStatus == "Waiting").SingleOrDefault();
+            }
+            else
+            {
+                Console.WriteLine("No changes have been made");
+            }
         }
 
         internal static void RemoveAdoption(int animalId, int clientId)
