@@ -11,10 +11,7 @@ namespace HumaneSociety
         static void Main(string[] args)
         {
 
-            //PointOfEntry.Run();
-            Admin something = new Admin();
-
-            something.LogIn();
+            PointOfEntry.Run();
         }
     }
 }

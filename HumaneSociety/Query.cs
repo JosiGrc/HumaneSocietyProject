@@ -346,10 +346,9 @@ namespace HumaneSociety
         {
             throw new NotImplementedException();
         }
-
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            throw new NotImplementedException();
+            var 
         }
     }
 }
