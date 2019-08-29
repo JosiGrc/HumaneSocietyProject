@@ -178,13 +178,59 @@ namespace HumaneSociety
 
         internal static Animal GetAnimalByID(int id)
         {
-            Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
+            var animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             return animal;
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {        
-            
+        {
+
+            var updateSelectedAnimal = db.Animals.Where(a => a.AnimalId == animalId).SingleOrDefault();
+            foreach (KeyValuePair<int, string> update in updates)
+            {
+                switch (update.Key)
+                {
+                    case 1:
+                        updateSelectedAnimal.CategoryId = GetCategoryId(update.Value);
+                        break;
+                    case 2:
+                        updateSelectedAnimal.Name = update.Value;
+                        break;
+                    case 3:
+                        updateSelectedAnimal.Age = int.Parse(update.Value);
+                        break;
+                    case 4:
+                        updateSelectedAnimal.Demeanor = update.Value;
+                        break;
+                    case 5:
+                        if (update.Value == "False" || update.Value == "0")
+                        {
+                            updateSelectedAnimal.KidFriendly = false;
+                        }
+                        else if (update.Value == "True" || update.Value == "1")
+                        {
+                            updateSelectedAnimal.KidFriendly = true;
+                        }
+                        break;
+                    case 6:
+                        if (update.Value == "False" || update.Value == "0")
+                        {
+                            updateSelectedAnimal.PetFriendly = false;
+                        }
+                        else if (update.Value == "True" || update.Value == "1")
+                        {
+                            updateSelectedAnimal.PetFriendly = true;
+                        }
+                        break;
+                    case 7:
+                        updateSelectedAnimal.Weight = int.Parse(update.Value);
+                        break;
+                    case 8:
+                        updateSelectedAnimal.AnimalId = int.Parse(update.Value);
+                        break;
+                }
+            }
+            db.SubmitChanges();
         }
 
         internal static void RemoveAnimal(Animal animal)
@@ -255,7 +301,17 @@ namespace HumaneSociety
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+
+            Adoption adoption = new Adoption();
+            var adoptClient = db.Clients.FirstOrDefault(c => c.ClientId == client.ClientId);
+            var adoptAnimal = db.Animals.FirstOrDefault(a => a.AnimalId == animal.AnimalId);
+            adoption.ClientId = adoptClient.ClientId;
+            adoption.AnimalId = adoptAnimal.AnimalId;
+            adoption.ApprovalStatus = "Waiting";
+            adoption.AdoptionFee = null;
+            adoption.PaymentCollected = false;
+            db.Adoptions.InsertOnSubmit(adoption);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()//brings back the animals whos adoption status = in process
