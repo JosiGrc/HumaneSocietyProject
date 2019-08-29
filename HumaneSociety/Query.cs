@@ -378,13 +378,8 @@ namespace HumaneSociety
         }
         internal static void UpdateShot(string shotName, Animal animal)
         {
-<<<<<<< HEAD
             var newShots = db.AnimalShots.Where(a => a.AnimalId == animal.AnimalId).SingleOrDefault();
             db.SubmitChanges();
-
-=======
-                
->>>>>>> a91693e3121b850ed7416249811139254704f3d6
         }
     }
 }
